@@ -19,6 +19,16 @@ console.log(isLoggedIn);
 let numbers: number[] = [1, 2, 3, 4, 5];  
 
 
+// the any type should not used as the value type can always change.
+// IF not type is assigned to a variable, it will be 'any' type.
+let pickel: any;
+pickel = "pickel";
+pickel = 1;
+pickel = true;
+pickel = [1, 2, 3];
+pickel = {name: "pickel"};
+pickel = () => {console.log("pickel")};
+
 
 const movies: { title: string, year: number, genre: string, rating: number }[] = [
   {
@@ -64,4 +74,6 @@ for (const movie of movies) {
 }
 
 console.log(selectedMovie);
+
+
 
