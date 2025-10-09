@@ -64,16 +64,14 @@ const movies: { title: string, year: number, genre: string, rating: number }[] =
 ];
 
 // using type on a variable that has not been declared yet
-let selectedMovie: { title: string, year: number, genre: string, rating: number } | undefined;
+let selectedMovie: { title: string, year: number, genre: string, rating: number } | object;
 
 for (const movie of movies) {
   const movieTitle = movie.title;
+  
  if(movieTitle.includes('Inception')){
   selectedMovie = movie;
  }
 }
-
-console.log(selectedMovie);
-
 
 
