@@ -311,7 +311,7 @@ type CarModelType = {
   }
 }
 
-const carModel = {
+const carModel: CarModelType = {
   manufacturer: "mercedes",
   model: "c-class",
   variation: 'AMG',
@@ -372,7 +372,7 @@ const user2: UserType = {
   isAdmin: false,
 }
 
-user2.id = 234567; // cant change the id as it is readonly (TypeScript will throw an error)
+// user2.id = 234567; // ❌ This would cause a TypeScript error - id is readonly
 
 
 
@@ -403,10 +403,10 @@ type CarType = { // second type
   name: string;
 }
 
-type modelType = ColorType & CarType; // combination of the two types
+type ModelType = ColorType & CarType; // combination of the two types
 
 
-const car: modelType = {
+const car: ModelType = {
 color: "black",
 name: "Mercedes",
 }
@@ -414,13 +414,13 @@ name: "Mercedes",
 console.log(car);
 
 
-//adding a new parameter to the modelType
-type modelType2 = ColorType & CarType & {
+//adding a new parameter to the ModelType
+type ModelType2 = ColorType & CarType & {
   price: number;
 }
 
 //new car2 object with the new parameter
-const car2: modelType2 = {
+const car2: ModelType2 = {
   color: "black",
   name: "Mercedes",
   price: 100000,
