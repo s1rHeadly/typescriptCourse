@@ -82,7 +82,6 @@ const member2 = {
   name: "David",
   country: "Australia",
   age: 47,
-  email: "david@gmail.com", // extra property not in function type
  
 }
 
@@ -107,7 +106,7 @@ function displayUser(user: {username: string, age: number}):void{
 
 // This FAILS - TypeScript will error because 'email' is not in the type definition
 // Uncomment to see the error:
-displayUser({username: "john_doe", age: 30, email: "john@example.com"});
+displayUser({username: "john_doe", age: 30});
 
 
 
