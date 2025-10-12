@@ -186,7 +186,7 @@ type DescriptionType = {
 }
 
 //example Data
-const person: DescriptionType = {
+const personA: DescriptionType = {
   name: "John",
   age: 30,
   address: {
@@ -196,12 +196,12 @@ const person: DescriptionType = {
   }
 }
 
-function describePerson(person: DescriptionType) : DescriptionType{
+function describePerson(personA: DescriptionType) : DescriptionType{
     return {...person};
 }
 
 // Test the function
-const describedPerson = describePerson(person);
+const describedPerson = describePerson(personA);
 console.log(describedPerson);
 
 
