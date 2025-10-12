@@ -197,7 +197,7 @@ const personA: DescriptionType = {
 }
 
 function describePerson(personA: DescriptionType) : DescriptionType{
-    return {...person};
+    return {...personA};
 }
 
 // Test the function
@@ -256,7 +256,7 @@ console.log(calculatePayment(song));
 
 
 // 2nd function to print the song
-function printSong(song: SongType) : string{
+function printSong(song: SongType) : string {
   return `The song title is ${song.title} and the producer is ${song.credits.producer}`;
 }
 

@@ -25,14 +25,20 @@ const mixed2 : Array<string | number> = [1, 'John', 2, 'Jane'];
 
 
 // an array of objects 
-const people : PersonType[] = [
+type PersonArrayType = {
+  name: string;
+  age: number;
+  country: string;
+};
+
+const people : PersonArrayType[] = [
   {name: 'John', age: 20, country: 'USA'},
   {name: 'Jane', age: 21, country: 'Canada'},
   {name: 'Jim', age: 22, country: 'UK'},
   {name: 'Jill', age: 23, country: 'Australia'},
 ];
 
-const people2 : Array<PersonType> = [
+const people2 : Array<PersonArrayType> = [
   {name: 'John', age: 20, country: 'USA'},
   {name: 'Jane', age: 21, country: 'Canada'},
   {name: 'Jim', age: 22, country: 'UK'},
@@ -42,14 +48,14 @@ const people2 : Array<PersonType> = [
 
 
 // moving the type to a type object
-type peopleType = {
+type PeopleType = {
   name: string;
   age: number;
   country: string;
 }
 
-// then using the peopleType object to define the array
-const people3 : peopleType[] = [
+// then using the PeopleType object to define the array
+const people3 : PeopleType[] = [
   {name: 'John', age: 20, country: 'USA'},
   {name: 'Jane', age: 21, country: 'Canada'},
   {name: 'Jim', age: 22, country: 'UK'},
@@ -61,7 +67,7 @@ const people3 : peopleType[] = [
 
 //multi-dimentional array
 
-const lotsofpeople : peopleType[][] = [
+const lotsofpeople : PeopleType[][] = [
     [{name: 'John', age: 20, country: 'USA'},
       {name: 'Jane', age: 21, country: 'Canada'}, 
       {name: 'Jim', age: 22, country: 'UK'}, {name: 'Jill', age: 23, country: 'Australia'}

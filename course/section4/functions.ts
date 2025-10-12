@@ -72,7 +72,7 @@ const myFunctionTest3 = (name: string = "Person"): string => {
 console.log(myFunctionTest3("David"));
 
 /**
- *  Function with a return typr
+ *  Function with a return type
  *  eg,
  *  function myFunction('param: type = default') : returnType{
  *  return value;

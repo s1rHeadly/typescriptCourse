@@ -30,6 +30,8 @@ pickel = {name: "pickel"};
 pickel = () => {console.log("pickel")};
 
 
+
+// array of objects
 const movies: { title: string, year: number, genre: string, rating: number }[] = [
   {
     title: "The Shawshank Redemption",
