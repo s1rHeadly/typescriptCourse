@@ -16,15 +16,16 @@ type Point = {
   y: number,
 }
 
-type Location = {
+type Loc = {
   lat: number,
   long: number
 }
 
-let coordinates: Point | Location = {
+let coordinates: Point | Loc = {
   x: 10,
   y: 20,
 }
+
 
 // can be a point or a location
 coordinates = {
@@ -66,11 +67,101 @@ let coordinates2: Point2 | Location2 = {
   x: 10,
   y: 20,
 }
-
+// can change to....
 coordinates2 = {
   kind: 'location',
   lat: 1230,
   long: 220,
 }
 
-// how we have no errors
+/** how we have no errors 
+ * You don’t have to use kind. Developers often use:
+ * type
+ * tag
+ * variant
+ * status  
+ * 
+*/
+
+
+
+
+
+
+/**
+ * functions and Union Types
+ * */ 
+function calculateTax(price: number | string, taxRate: number | string) : number{
+    if(typeof price === 'number' && typeof taxRate=== 'number'){
+      return price * taxRate;
+    }
+    return 0;
+}
+
+const tax = calculateTax(100, 0.1);
+console.log(tax);
+
+
+
+
+
+/**
+ * 
+ * Union types with arrays
+  wrapping the types in brackets says we wamt the array to be either type of string or type of number
+  if we do something like let items: string | number[] = ["apple", 42, "banana", 100]; we get an error because the array is not typed and is treated as an empty array
+  Also dont do this let items: string[] | number[] = [] because we are trying to assign an array of strings to an array of numbers and vice versa
+*/
+let itemsArray: (string | number)[] = ["apple", 42, "banana", 100];
+itemsArray.push(100);
+
+
+
+
+//goin back to the Points and Loc we can say use either for our array
+let coordinatesArray: (Point | Loc)[] = [{x: 10, y: 20}, {lat: 1230, long: 220}];
+coordinatesArray.push({x: 10, y: 20});
+coordinatesArray.push({lat: 1230, long: 220});
+
+
+
+
+
+
+
+
+/** Literal Types
+ * 
+ * 
+*/
+
+let declined: "no" = "no";
+declined = "yes"; // error
+
+
+let accepted: "yes" = "yes";
+accepted = "no"; // error
+
+
+let response: "yes" | "no"| "maybe";
+response = "maybe"; // error
+response = "yes"; //accepted
+
+
+
+
+
+// literal types with a function
+type ResponseChoice = "yes" | "no" | "maybe";
+let response2: ResponseChoice; //assign the type to the variable response2
+
+function PizzaNight(response2: ResponseChoice): ResponseChoice {
+  console.log(`Is tonight pizza night? ${response2}`);
+  return response2;
+}
+
+const pizzaNightResponse = PizzaNight("yes");
+console.log(pizzaNightResponse);
+
+const pizzaNightResponse2 = PizzaNight("I'm not sure If I want it"); // error
+console.log(pizzaNightResponse);

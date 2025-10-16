@@ -38,7 +38,19 @@ function processValue(value: string | number) {
     }
 }
 
-// Union types with arrays
+
+
+
+
+
+
+/**
+ * 
+ * Union types with arrays
+  wrapping the types in brackets says we wamt the array to be either type of string or type of number
+  if we do something like let items: string | number[] = ["apple", 42, "banana", 100]; we get an error because the array is not typed and is treated as an empty array
+  Also dont do this let items: string[] | number[] = [] because we are trying to assign an array of strings to an array of numbers and vice versa
+*/
 let items: (string | number)[] = ["apple", 42, "banana", 100];
 
 // Union types with objects
@@ -54,6 +66,8 @@ interface ApiResponse {
 let response: ApiResponse = {
     status: "loading"
 };
+
+
 
 // Literal union types
 type Direction = "up" | "down" | "left" | "right";
