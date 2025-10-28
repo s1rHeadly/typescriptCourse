@@ -18,7 +18,7 @@ const names : string[] = ["John", "Jane", "Jim", "Jill"];
 const names2 : Array<string> = ['John', 'Jane', 'Jim', 'Jill'];
 
 
-const mixed : (string | number)[] = [1, 'John', 2, 'Jane'];
+const mixed : (string | number)[] = [1, 'John', 2, 'Jane', 'david', 'John'];
 
 const mixed2 : Array<string | number> = [1, 'John', 2, 'Jane'];
 
