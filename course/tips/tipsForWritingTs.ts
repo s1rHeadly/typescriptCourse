@@ -64,10 +64,13 @@ const latestMercedes2: Car2 = {
   startEngine(): boolean { // this is wrong
     return true;
   }
-  startEngine() { // this is correct
+  startEngine() { // this is
     return true;
   }
 }
 
+
+//unicon type where numbers are a string or a number
+type numbersType = number[] | number;
 
 
