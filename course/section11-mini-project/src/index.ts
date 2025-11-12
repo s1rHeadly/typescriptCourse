@@ -18,6 +18,8 @@ import checkboxChecked from './utils/helpers.js';
     inputValue: string;
     isChecked: boolean;
   }
+
+
 /**
  * variables
  * */
@@ -26,7 +28,8 @@ const form = document.querySelector('#todoform') as HTMLFormElement;
 const input = document.querySelector('#todoinput') as HTMLInputElement;
 const checkbox = document.querySelector('#checkbox') as HTMLInputElement;
 let isChecked: IsChecked = false;
-let formData: FormSubmission = {inputValue: '', isChecked: false}
+let formData: FormSubmission = {inputValue: '', isChecked: false};
+let data: FormSubmission [] = [];
 
 
 
@@ -35,10 +38,10 @@ let formData: FormSubmission = {inputValue: '', isChecked: false}
    * functions
    * */ 
 
-  function formSubmission(e: Event): FormSubmission{
+  function formSubmission(e: Event): void{
     e.preventDefault();
     let inputValue = input.value;
-    console.log(inputValue);
+    // console.log(inputValue);
 
     // check if the checkbox is checked
     isChecked = checkboxChecked(checkbox);
@@ -47,11 +50,13 @@ let formData: FormSubmission = {inputValue: '', isChecked: false}
     if(isChecked){
       formData.inputValue = inputValue;
       formData.isChecked = isChecked;
-      return formData;
+      data.push({inputValue: inputValue, isChecked: isChecked});
+      form.reset();
     }else{
       console.log('checkbox not checked');
-      return formData;
     }
+
+    console.log(data);
   }
 
 
