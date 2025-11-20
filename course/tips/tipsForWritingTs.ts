@@ -12,12 +12,12 @@
  * Write the JS first and then add the types
  */
 
-function add(a, b){
+function add(a: any, b: any) {
   return a + b;
 }
 
-function add2(a:number, b:number){
-  return numbers.reduce((acc, curr) => acc + curr, 0);
+function add2(a: number, b: number) {
+  return a + b;
 }
 
 
@@ -38,7 +38,7 @@ const benz: Car3 = {
   year: 2013,
   color: 'Black',
   topSpeed: 300,
-  averageCruiseSpeed(speed: number) {
+  averageCruiseSpeed(speed) {
     const averageSpeed = this.topSpeed / speed;
     return averageSpeed;
   }
@@ -54,23 +54,25 @@ interface Car2 {
   model: string;
   readonly year: number;
   color: string;
-  startEngine(): boolean
+  startEngine(): boolean;
 }
 
 const latestMercedes2: Car2 = {
   model: 'C63-AMG',
   year: 2013,
   color: 'Black',
-  startEngine(): boolean { // this is wrong
+  startEngine() { // correct - don't add return type in implementation
     return true;
-  }
-  startEngine() { // this is
-    return true;
-  }
-}
+  },
+};
 
 
-//unicon type where numbers are a string or a number
-type numbersType = number[] | number;
+// union type where numbersType is either an array of numbers or a single number
+type numbersType = (number | string)[] | [];
 
 
+
+
+
+// Disable TypeScript checking for a file
+// @ts-nocheck

@@ -15,7 +15,7 @@
   },
   "include": [
     "**/*.ts"
-  ],
+, "course/section12/src/classNoTypescript.js"  ],
   "exclude": [
     "node_modules",
     "dist"

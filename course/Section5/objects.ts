@@ -9,14 +9,14 @@ const dog = {
   name: "Rex",
   breed: "German Shepherd",
   age: 3,
-  bark: function(){
+  bark: function () {
     console.log("Woof!");
   }
-}
+};
 
 
 // add the object type to the function param with the object types
-function getPet(pet:{name: string, breed: string, age: number}):void{
+function getPet(pet: { name: string, breed: string, age: number; }): void {
   console.log(`${pet.name} is a ${pet.breed} and is ${pet.age} years old`);
 }
 
@@ -40,7 +40,7 @@ type PersonType = {
 };
 
 // create the object
-const member : PersonType = {
+const member: PersonType = {
   name: "David",
   country: "Australia",
   age: 47,
@@ -49,17 +49,28 @@ const member : PersonType = {
 
 
 // create the function and add the Object type to the function param And use the Person type to return the object person:Person Person
-function getPerson(member: PersonType) : PersonType {
-  return {...member}; // returning a copy of the object
+function getPerson(member: PersonType): PersonType {
+  return { ...member }; // returning a copy of the object
 }
 
 getPerson(member); //evoke the function with the object
 
+// array of objects
+const peopleList: PersonType[] = [
+  { name: "John", country: "USA", age: 25 },
+  { name: "Jane", country: "Canada", age: 30 },
+  { name: "Bob", country: "UK", age: 35 }
+];
 
+function getAllPeopleObjects(peopleList: PersonType[]): PersonType | null {
+  const getJohn = peopleList.find(person => person.name === "John");
+  if (getJohn) {
+    return getJohn;
+  }
+  return null;
+}
 
-
-
-
+console.log(getAllPeopleObjects(peopleList));
 
 
 // ========================================
@@ -82,12 +93,12 @@ const member2 = {
   name: "David",
   country: "Australia",
   age: 47,
- 
-}
+
+};
 
 
-function showPerson(member2: {name: string, country: string, age: number}): void {
- console.log(member2);
+function showPerson(member2: { name: string, country: string, age: number; }): void {
+  console.log(member2);
 }
 
 // ✅ This WORKS - passing an existing object with excess properties
@@ -100,13 +111,13 @@ showPerson(member2);
 
 
 // Example showing the error when passing a literal object with excess properties
-function displayUser(user: {username: string, age: number}):void{
+function displayUser(user: { username: string, age: number; }): void {
   console.log(`${user.username} is ${user.age} years old`);
 }
 
 // This FAILS - TypeScript will error because 'email' is not in the type definition
-// Uncomment to see the error:
-displayUser({username: "john_doe", age: 30});
+// Uncomment to see the error: - to fix either add a email property to the object as an option, ie email?: string; or add the email property to the object, ie { username: "john_doe", age: 30, email: "john_doe@gmail.com" };
+displayUser({ username: "john_doe", age: 30 });
 
 
 
@@ -129,20 +140,20 @@ displayUser({username: "john_doe", age: 30});
 Optional properties use ? in type definitions, not in object literals
 Type annotations on variables help catch errors early
 Type consistency between objects and their types is crucial
-
-
+ 
+ 
 */
 
 
-type CoordsType = {x: number, y: number};
+type CoordsType = { x: number, y: number; };
 
-let coords: CoordsType = {x: 43, y: 22}; // using coordsType ensures the type annotation meets that of the type 
+let coords: CoordsType = { x: 43, y: 22 }; // using coordsType ensures the type annotation meets that of the type 
 
-function doublePoint(coords: CoordsType):CoordsType{
-    return {
-      x: coords.x * 2,
-      y: coords.y * 2,
-    }
+function doublePoint(coords: CoordsType): CoordsType {
+  return {
+    x: coords.x * 2,
+    y: coords.y * 2,
+  };
 }
 
 doublePoint(coords);
@@ -183,7 +194,7 @@ type DescriptionType = {
     city: string;
     state: string;
   };
-}
+};
 
 //example Data
 const personA: DescriptionType = {
@@ -194,10 +205,10 @@ const personA: DescriptionType = {
     city: "Anytown",
     state: "CA",
   }
-}
+};
 
-function describePerson(personA: DescriptionType) : DescriptionType{
-    return {...personA};
+function describePerson(personA: DescriptionType): DescriptionType {
+  return { ...personA };
 }
 
 // Test the function
@@ -216,7 +227,7 @@ console.log(describedPerson);
  * Use an objec to create a Spotfiy song and calcuulate the amount of money the artist will make
  * 
  * |Then create a new function which take in the same oject and prin a string from the object with the title and the producer
- * */ 
+ * */
 
 
 const song = {
@@ -228,7 +239,7 @@ const song = {
     producer: "Dimebag Darrell",
     composer: "Vinnie Paul",
   }
-}
+};
 
 
 type SongType = {
@@ -240,10 +251,10 @@ type SongType = {
     producer: string;
     composer: string;
   };
-}
+};
 
 
-function calculatePayment(song: SongType) : number { // remember we are returning a number from this function!
+function calculatePayment(song: SongType): number { // remember we are returning a number from this function!
   const paymentPerStream = 0.33;
   const totalStreams = song.streams * paymentPerStream;
   return totalStreams;
@@ -256,7 +267,7 @@ console.log(calculatePayment(song));
 
 
 // 2nd function to print the song
-function printSong(song: SongType) : string {
+function printSong(song: SongType): string {
   return `The song title is ${song.title} and the producer is ${song.credits.producer}`;
 }
 
@@ -271,13 +282,13 @@ console.log(printSong(song));
 // like we can add the type params inside the function but adding a type object to the function param is a better approach
 
 // not this... (inline type definition - hard to read and reuse)
-function calculatePayment2(song:{title: string, artist: string, duration: number, streams: number, credits: {producer: string, composer: string}}) : number{
+function calculatePayment2(song: { title: string, artist: string, duration: number, streams: number, credits: { producer: string, composer: string; }; }): number {
   const paymentPerStream = 0.33;
   return song.streams * paymentPerStream;
 }
 
 // but this... (using type alias - much cleaner and reusable)
-function calculatePayment3(song: SongType) : number{
+function calculatePayment3(song: SongType): number {
   const paymentPerStream = 0.33;
   return song.streams * paymentPerStream;
 }
@@ -307,19 +318,19 @@ type CarModelType = {
     valves: number;
     horsepower: number;
     torque: number;
-  }
-}
+  };
+};
 
 const carModel: CarModelType = {
   manufacturer: "mercedes",
   model: "c-class",
   variation: 'AMG',
-  engine:{
+  engine: {
     valves: 16,
     horsepower: 400,
     torque: 480,
   }
-}
+};
 
 
 
@@ -361,7 +372,7 @@ type UserType = {
   userName: string;
   age: number;
   isAdmin: boolean;
-}
+};
 
 
 const user2: UserType = {
@@ -369,7 +380,7 @@ const user2: UserType = {
   userName: "john_doe",
   age: 30,
   isAdmin: false,
-}
+};
 
 // user2.id = 234567; // ❌ This would cause a TypeScript error - id is readonly
 
@@ -395,20 +406,20 @@ const user2: UserType = {
 // Add your intersection types examples here:
 
 type ColorType = { // first type
-color: string
-}
+  color: string;
+};
 
 type CarType = { // second type
   name: string;
-}
+};
 
 type ModelType = ColorType & CarType; // combination of the two types
 
 
 const car: ModelType = {
-color: "black",
-name: "Mercedes",
-}
+  color: "black",
+  name: "Mercedes",
+};
 
 console.log(car);
 
@@ -416,7 +427,7 @@ console.log(car);
 //adding a new parameter to the ModelType
 type ModelType2 = ColorType & CarType & {
   price: number;
-}
+};
 
 //new car2 object with the new parameter
 const car2: ModelType2 = {

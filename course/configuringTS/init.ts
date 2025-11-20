@@ -18,4 +18,36 @@
  * 
  * - : compile only a subet of files
  * ...
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * updated scripts with the npm package concurrently to run the watch and lite-server commands concurrently
+ * 
+ * {
+  "name": "section12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run watch\" \"lite-server\"", => here we are running the watch and lite-server commands concurrently together with npm run start
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
+
+
 */

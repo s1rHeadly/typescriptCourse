@@ -1,8 +1,10 @@
 /* These are pretty much like types, but they are used to define the structure of an object
 
-- They can be reponed
+- They can be redefined
 - They can be extended
  
+
+Use interfaces rather than types for objects
 */
 
 
@@ -16,17 +18,17 @@ interface Car {
     cylinders: number;
     horsepower: number;
     torque: number;
-  }
+  };
 }
 
 
-const latestMercedes : Car = {
+const latestMercedes: Car = {
   model: 'C63-AMG',
   year: 2013,
   color: 'Black',
   price: 100000,
   coupe: true,
-}
+};
 
 
 
@@ -44,7 +46,7 @@ interface Car2 {
 }
 
 
-const latestMercedes2: Car2 = {
+const latestMercedesCar2: Car2 = {
   model: 'C63-AMG',
   year: 2013,
   color: 'Black',
@@ -53,7 +55,7 @@ const latestMercedes2: Car2 = {
   }
 };
 
-console.log(latestMercedes2.startEngine());
+console.log(latestMercedesCar2.startEngine());
 
 
 /* Methods with parameters */
@@ -67,7 +69,7 @@ interface Car3 {
 }
 
 
-const latestMercedes3 : Car3 = {
+const latestMercedes3: Car3 = {
   model: 'C63-AMG',
   year: 2013,
   color: 'Black',
@@ -76,7 +78,7 @@ const latestMercedes3 : Car3 = {
     const averageSpeed = this.topSpeed / speed;
     return averageSpeed;
   }
-}
+};
 
 
 console.log(latestMercedes3.averageCruiseSpeed(2)); // ✅ Works fine
@@ -86,17 +88,17 @@ console.log(latestMercedes3.averageCruiseSpeed(2)); // ✅ Works fine
 
 
 
-// Reopning Interfaces
+// Reopening Interfaces
 
-interface Dog{
+interface Dog {
   name: string;
-  age: number
+  age: number;
 }
 
 // can use again the same interface name because it is a different interface properties
-interface Dog{
+interface Dog {
   breed: string;
-  bark(): string
+  bark(): string;
 }
 
 // using the two Dog interfaces together
@@ -104,10 +106,10 @@ const myDog: Dog = {
   name: "Snoopy",
   age: 10,
   breed: "sheepdog",
-  bark: function(){
+  bark: function () {
     return "Woof!";
   }
-}
+};
 
 
 
@@ -127,4 +129,4 @@ const myServiceDog: ServiceDog = {
   bark() {
     return `${this.name} is a ${this.breed} and is ${this.age} years old and is a ${this.job}`;
   }
-}
+};

@@ -3,42 +3,47 @@ import checkboxChecked from './utils/helpers.js';
 
 
 // IIFY WRAPPER
-(function(){
+(function () {
 
   'use strict';
 
 
   /**
    * type declarations
-   * */ 
+   * */
 
 
   type IsChecked = boolean;
-  interface FormSubmission{
+  interface FormSubmission {
     inputValue: string;
     isChecked: boolean;
   }
 
 
-/**
- * variables
- * */
+  /**
+   * variables
+   * */
 
-const form = document.querySelector('#todoform') as HTMLFormElement;
-const input = document.querySelector('#todoinput') as HTMLInputElement;
-const checkbox = document.querySelector('#checkbox') as HTMLInputElement;
-let isChecked: IsChecked = false;
-let formData: FormSubmission = {inputValue: '', isChecked: false};
-let data: FormSubmission [] = [];
+  const form = document.querySelector('#todoform') as HTMLFormElement;
+  const input = form?.querySelector('#todoinput') as HTMLInputElement;
+  const checkbox = form?.querySelector('#checkbox') as HTMLInputElement;
+  let isChecked: IsChecked = false;
+  let formData: FormSubmission = { inputValue: '', isChecked: false };
+  let data: FormSubmission[] = [];
 
+
+
+  if (!form) {
+    return;
+  };
 
 
 
   /**
    * functions
-   * */ 
+   * */
 
-  function formSubmission(e: Event): void{
+  function formSubmission(e: Event): void {
     e.preventDefault();
     let inputValue = input.value;
     // console.log(inputValue);
@@ -47,12 +52,12 @@ let data: FormSubmission [] = [];
     isChecked = checkboxChecked(checkbox);
 
     // if it is then submit the form
-    if(isChecked){
+    if (isChecked) {
       formData.inputValue = inputValue;
       formData.isChecked = isChecked;
-      data.push({inputValue: inputValue, isChecked: isChecked});
+      data.push({ inputValue: inputValue, isChecked: isChecked });
       form.reset();
-    }else{
+    } else {
       console.log('checkbox not checked');
     }
 
@@ -60,7 +65,7 @@ let data: FormSubmission [] = [];
   }
 
 
-  
+
 
 
 
@@ -68,16 +73,16 @@ let data: FormSubmission [] = [];
 
   /**
    * listeners
-   * */ 
-  
-function listeners(): void{
+   * */
 
-  // form submission
-  if(form){
-    form.addEventListener('submit', formSubmission);
+  function listeners(): void {
+
+    // form submission
+    if (form) {
+      form.addEventListener('submit: SubmitEvent', formSubmission);
+    }
+
   }
-
-}
 
 
 
@@ -85,9 +90,9 @@ function listeners(): void{
   /**
    * initialize app
   */
-  window.addEventListener('DOMContentLoaded', function(){
+  window.addEventListener('DOMContentLoaded', function () {
     listeners();
-  })
+  });
 
 })();
 

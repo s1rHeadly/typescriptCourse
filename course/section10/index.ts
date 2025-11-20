@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 
   interface Car {
@@ -11,11 +11,11 @@
       cylinders: number;
       horsepower: number;
       torque: number;
-    }
+    };
   }
-  
-  
-  const latestMercedes: Car = {
+
+
+  const c63AMG: Car = {
     model: 'C63-AMG',
     year: 2013,
     color: 'Black',
@@ -23,9 +23,12 @@
     coupe: true,
     engine: {
       cylinders: 8,
-      horsepower: 450,
+      horsepower: 487,
       torque: 450,
     }
-  }
+  };
+
+
+  console.log(c63AMG);
 
 })();
