@@ -6,6 +6,7 @@ class Player {
   readonly lastName: string;
   private id: number | string;
   public score: number = 0;
+  protected location: string = "Australia"; // only accessible within the class and its subclasses
 
   constructor(firstName: string, lastName: string, id?: number | string) {
     this.firstName = firstName;
@@ -56,4 +57,16 @@ console.log(administratorOne);
 
 
 
+// using the protected keyword to access the location property in the subclass
+class PlayerWithLocation extends Administrator {
+  constructor(firstName: string, lastName: string, isLoggedin: boolean, id?: number | string) {
+    super(firstName, lastName, isLoggedin, id);
+  }
+  getLocation(location: string): string {
+    this.location = location;
+    return this.location;
+  }
+}
 
+const superPlayerOne = new PlayerWithLocation('John', 'Doe', true);
+console.log(superPlayerOne.getLocation('Ireland'));
