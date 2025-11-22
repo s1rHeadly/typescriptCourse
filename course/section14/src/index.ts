@@ -138,5 +138,68 @@ console.log(returnObject);
 
 
 
+// another example of a Generic Function
+// lets say we have three arrays of numbers, strings and booleans
+const randomNumbers = [1, 3, 3, 4, 5, 6, 7, 8, 9, 10];
+const randomStrings = ['Hello', 'World', 'Typescript', 'Generics', 'Functions'];
+const randomBooleans = [true, false, true, false, true];
+
+
+
+
+/**
+ * explanation of the getRandValue function
+ * 
+ * I create my function as usual
+ * I pass in a parameter and say
+ * I want this funtion to be a Generic Function first <T>
+ * I want my parameter to be of Type Array T[] (second T)
+ * and I want to return that same type back (last T)
+ * 
+ * 
+ * 
+*/
+
+
+
+function getRandValue<T>(list: T[]): T { // pass in one type and get back one type back of the same relationship type (list indicates our parameter)
+  const randIndex = Math.floor(Math.random() * list.length);
+  return list[randIndex];
+}
+
+
+
+
+
+const getRandomNumber = getRandValue<number>(randomNumbers); // we want to pass in a numbers array and get back a number hense <number>
+console.log('getRandomNumber', { getRandomNumber });
+
+
+const getRandomString = getRandValue<string>(randomStrings); // we want to pass in a strings array and get back a string hense <string>
+console.log('getRandomString', { getRandomString });
+
+const getRandomBoolean = getRandValue<boolean>(randomBooleans); // we want to pass in a booleans array and get back a boolean hense <boolean>
+console.log('getRandomBoolean', { getRandomBoolean });
+
+
+
+
+
+
+// customising a Generic Function with interface
+
+interface TypeBoxInterface {
+  width: number;
+  height: number;
+  length: number;
+  color: string;
+}
+
+
+const storageBox = returnGeneric<TypeBoxInterface>({ width: 10, height: 10, length: 10, color: 'red' });
+console.log('storagebox', { storageBox });
+
+
+
 
 
