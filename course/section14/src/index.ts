@@ -202,4 +202,16 @@ console.log('storagebox', { storageBox });
 
 
 
+// providing default values to Generic Functions
+function returnGenericDefault<T = string>(arg: T): T { // here we are saying that the default type is string if none is provided
+  return arg;
+}
 
+const returnStringDefault = returnGenericDefault<string>('Hello');
+console.log(returnStringDefault);
+
+const returnNumberDefault = returnGenericDefault<number>(123);
+console.log(returnNumberDefault);
+
+const returnBooleanDefault = returnGenericDefault<boolean>(true);
+console.log(returnBooleanDefault);
