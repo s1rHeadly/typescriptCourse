@@ -96,10 +96,10 @@ addNumbers(1, 2, 3, 6, 7, 78, 8);
  * Contextual typing
  * */
 
-const colors = ['red', 'green', 'blue'];
+const mycolors = ['red', 'green', 'blue'];
 
 // we dont ned to add a type to color as it is already defined in the colors array
-const getColor = colors.map((color) => {
+const getColor = mycolors.map((color) => {
   if (color.match(/^blue$/)) {
     return color;
   }
