@@ -79,3 +79,21 @@ type numbersType = (number | string)[] | [];
 
 
 
+
+// use unknown instead of any
+type unknownType = unknown;
+
+let notSure: unknownType = 'Hello World'; // can change from string to number
+notSure = 123; // can change from number to string
+notSure = true; // can change from boolean to string
+notSure = [1, 2, 3]; // can change from array to string
+notSure = { name: 'John' }; // can change from object to string
+notSure = () => { console.log('Hello World'); }; // can change from function to string
+notSure = undefined; // can change from undefined to string
+notSure = null; // can change from null to string
+notSure = NaN; // can change from NaN to string
+notSure = Infinity; // can change from Infinity to string
+
+
+
+
