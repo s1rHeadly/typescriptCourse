@@ -75,7 +75,7 @@ const publicUser2: PublicPerson = {
 };
 
 
-// remove email property and and id property and create a new type StaffMember
+// remove email property and id property and create a new type StaffMember
 type StaffMember = Omit<TPublicUser, "email" | "id">;
 
 

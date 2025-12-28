@@ -152,7 +152,7 @@ const randomBooleans = [true, false, true, false, true];
  * 
  * I create my function as usual
  * I pass in a parameter and say
- * I want this funtion to be a Generic Function first <T>
+ * I want this function to be a Generic Function first <T>
  * I want my parameter to be of Type Array T[] (second T)
  * and I want to return that same type back (last T)
  * 
