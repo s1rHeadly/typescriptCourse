@@ -50,7 +50,7 @@ const member: PersonType = {
 
 // create the function and add the Object type to the function param And use the Person type to return the object person:Person Person
 function getPerson(member: PersonType): PersonType {
-  return { ...member }; // returning a copy of the object
+  return { ...member, phone: '555-1234' }; // returning a copy of the object
 }
 
 getPerson(member); //evoke the function with the object

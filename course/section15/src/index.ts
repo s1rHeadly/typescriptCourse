@@ -121,6 +121,7 @@
     return 'breed' in animal;
   }
 
+
   function getAnimal(animal: Cat | Dog): string {
     if (isCat(animal)) {
       return `Cat: ${animal.name}`;
@@ -132,3 +133,50 @@
   getAnimal({ name: 'Rex', breed: 'German Shepherd', bark: () => 'woof' });
 
 })();
+
+
+// type predicates - where interfaces have the same properies and we want to target a specific
+// use kind to use an an id so to speak
+
+interface PlayerOne {
+  kind: 'playerOne';
+  name: string,
+  age: number | string,
+  rating: number,
+
+}
+
+interface PlayerTwo {
+  kind: 'playerTwo';
+  name: string,
+  age: number | string,
+  rating: number,
+}
+
+interface PlayerThree {
+  kind: 'playerThree';
+  name: string,
+  age: number | string,
+  rating: number,
+}
+
+
+type PlayerType = PlayerOne | PlayerTwo | PlayerThree;
+
+
+function playerinfo(player: PlayerType) {
+  switch (player.kind) {
+    case "playerOne":
+      console.log(player.rating);
+      break;
+    case "playerTwo":
+      console.log(player.name);
+      break;
+    case "playerThree":
+      console.log(player.age);
+      break;
+    default:
+      console.log(player);
+      break;
+  }
+}
