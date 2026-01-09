@@ -1,0 +1,89 @@
+/**
+course/section18
+Getting webpack  to work with typescript
+
+Setup iunstructions
+
+tsc --init
+npm init y
+create file structure
+edit the tsc config and package.json file to match to make sure we can use modules imports and exports
+
+adding loadash with typescript
+
+npm install loadash or
+npm install lodash && npm install --save-dev @types/lodash
+
+import _ from 'lodash'; // add to file
+
+when importing loadash we get this error...
+Uncaught TypeError: Failed to resolve module specifier "lodash". Relative references must start with either "/", "./", or "../".
+So we need to install webpack to work with loadash
+
+Installing Webpack
+https://webpack.js.org/concepts/
+npm install --save-dev webpack webpack-cli typescript ts-loader
+
+create the webpak config in the root
+see example in the docs here: https://webpack.js.org/guides/typescript/ (webpack.config.js)
+
+..then, add to package.json file scrips section18
+  "build": "webpack"
+
+  Run Webpack
+  npm run build
+
+
+
+Errors will ask to remove .js from all imports
+
+Now we have a bundle file inside course/section18/dist/bundle.js
+
+Finally undate the index.html file (no need for module as its wepback)
+ <script src="dist/bundle.js" defer></script>
+
+
+Adding a source map so we can bebug code from the compiled bundle.js file
+
+Update the tsconfig to tell typescript = > simply find it in the file and turn it on (true)
+Update the weback.config to tell Webpack = > go to the docs, get the snippet and add to the file ( devtool: 'inline-source-map') => see docs
+
+Open dev tools => sources => section18 and we can see the src files for all imports that have been added to the bundle.js file
+
+
+
+
+Webpack Server Setup 
+https://webpack.js.org/configuration/dev-server/
+npm install --save-dev weback-dev-server (to replace lite-server)
+
+module.exports = {
+  //...
+  devServer: {
+    allowedHosts: [
+      'host.com',
+      'subdomain.host.com',
+      'subdomain2.host.com',
+      'host2.com',
+    ],
+  },
+};
+
+
+Webpack Dev / Production Developement Setup
+Modes are Developement and Production
+Both builds completed successfully. Differences:
+Development Build (npm run build:dev)
+Output: bundle.js (15.4 KiB)
+Not minified
+Inline source maps
+Faster compilation
+Production Build (npm run build:prod)
+Output: bundle.cbf7cc5ceaa4af94469c.js (594 bytes)
+Minified and optimized
+Content hash in filename (cache busting)
+Separate source map file
+~96% smaller than dev build
+Both builds work correctly. The production build is optimized and much smaller, while the development build is easier to debug with inline source maps.
+
+*/
